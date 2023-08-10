@@ -1,0 +1,232 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card border-primary text-center mt-2 ">
+                <div class="card-header text-bg-primary">
+                    <h3>Agregar Vecino</h3>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Datos personales</h5>
+                    <hr/>
+                    <form class="mt-4 text-start" [formGroup] = "formVecino" (ngSubmit)="guardar()">
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <div class="form-floating">
+                                    <input type="text" [ngClass]="submitted && formVecino.get('nombre')?.invalid ? 'is-invalid' : ''" class="form-control" id="nombrevecino" formControlName="nombre" placeholder="Nombre completo">
+                                    <label for="nombrevecino">Nombre completo</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="rutvecino" formControlName="rut" placeholder="RUT">
+                                    <label for="rutvecino">RUT</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <div class="form-floating">
+                                    <input type="text" [ngClass]="submitted && formVecino.get('direccion')?.invalid ? 'is-invalid' : ''" class="form-control" id="direccionvecino" formControlName="direccion" placeholder="Dirección">
+                                    <label for="direccionvecino">Dirección</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="emailvecino" formControlName="email" placeholder="Email">
+                                    <label for="emailvecino">Email</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <div class="form-floating">
+                                    <input type="text" [ngClass]="submitted && formVecino.get('telefono')?.invalid ? 'is-invalid' : ''" class="form-control" id="telefono" formControlName="telefono" placeholder="Teléfono">
+                                    <label for="telefono">Teléfono</label>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="card-title text-center">Integrantes del domicilio</h5>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="cantidad" formControlName="cantidad" placeholder="Cantidad de integrantes">
+                                    <label for="cantidad">Cantidad de integrantes</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Niños</span>
+                                    <input type="radio" class="btn-check" name="ninios" id="niniosSi" formControlName="ninios" value="si" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="niniosSi">SI</label>
+                                    <input type="radio" class="btn-check" name="ninios" id="niniosNo" formControlName="ninios" value="no" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="niniosNo">NO</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <div class="input-group">
+                                    <span class="input-group-text">Edades</span>
+                                    <input type="text" aria-label="edades" class="form-control" id="edades1" formControlName="edad1">
+                                    <input type="text" aria-label="edades" class="form-control" id="edades2" formControlName="edad2">
+                                    <input type="text" aria-label="edades" class="form-control" id="edades3" formControlName="edad3">
+                                    <input type="text" aria-label="edades" class="form-control" id="edades4" formControlName="edad4">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Personas con movilidad reducida</span>
+                                    <input type="radio" class="btn-check" name="reducida" id="reducidaSi" formControlName="reducida" value="si" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="reducidaSi">SI</label>
+                                    <input type="radio" class="btn-check" name="reducida" id="reducidaNo" formControlName="reducida" value="no" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="reducidaNo">NO</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Adultos mayores</span>
+                                    <input type="radio" class="btn-check" name="mayores" id="mayoresSi" formControlName="mayores" value="si" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="mayoresSi">SI</label>
+                                    <input type="radio" class="btn-check" name="mayores" id="mayoresNo" formControlName="mayores" value="no" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="mayoresNo">NO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="card-title text-center">Accesos</h5>
+                        <hr/>
+                        <div class="row">
+                            <div class="col col-md-6 mb-2">
+                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Portón la playa</span>
+                                    <input type="radio" class="btn-check" name="acceso_porton_playa" id="portonPlayaSi" formControlName="acceso_porton_playa" value="si" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="portonPlayaSi">SI</label>
+                                    <input type="radio" class="btn-check" name="acceso_porton_playa" id="portonPlayaNo" formControlName="acceso_porton_playa" value="no" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="portonPlayaNo">NO</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Puerta la playa</span>
+                                    <input type="radio" class="btn-check" name="acceso_puerta_playa" id="puertaPlayaSi" formControlName="acceso_puerta_playa" value="si" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="puertaPlayaSi">SI</label>
+                                    <input type="radio" class="btn-check" name="acceso_puerta_playa" id="puertaPlayaNo" formControlName="acceso_puerta_playa" value="no" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="puertaPlayaNo">NO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="patente" class="col-sm-3 col-form-label">Teléfonos Asociados</label>
+                            <div class="col-sm-3 mb-2">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="numeroplaya1" formControlName="numero_acceso_porton_playa1" placeholder="Número">
+                                    <label for="numeroplaya1">Número</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 mb-2">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="numeroplaya2" formControlName="numero_acceso_porton_playa2" placeholder="Número">
+                                    <label for="numeroplaya2">Número</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 mb-2">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="numeroplaya3" formControlName="numero_acceso_porton_playa3" placeholder="Número">
+                                    <label for="numeroplaya3">Número</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Portón el llano</span>
+                                    <input type="radio" class="btn-check" name="acceso_porton_llano" id="llanoSi" formControlName="acceso_porton_llano" value="si" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="llanoSi">SI</label>
+                                    <input type="radio" class="btn-check" name="acceso_porton_llano" id="llanoNo" formControlName="acceso_porton_llano" value="no" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="llanoNo">NO</label>
+                                    <input type="checkbox" class="btn-check" id="control_porton_llano" autocomplete="off" value="si" formControlName="control_porton_llano">
+                                    <label class="btn btn-outline-success" for="control_porton_llano">Control</label>
+                                    <input type="checkbox" class="btn-check" id="llave_porton_llano" autocomplete="off" value="si" formControlName="llave_porton_llano">
+                                    <label class="btn btn-outline-success" for="llave_porton_llano">Llave</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Puerta el llano</span>
+                                    <input type="radio" class="btn-check" name="acceso_puerta_llano" id="puertaLlanoSi" formControlName="acceso_puerta_llano" value="si" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="puertaLlanoSi">SI</label>
+                                    <input type="radio" class="btn-check" name="acceso_puerta_llano" id="puertaLlanoNo" formControlName="acceso_puerta_llano" value="no" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="puertaLlanoNo">NO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Puerta cachapoal</span>
+                                    <input type="radio" class="btn-check" name="acceso_puerta_cachapoal" id="puertaCachapoalSi" formControlName="acceso_puerta_cachapoal" value="si" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="puertaCachapoalSi">SI</label>
+                                    <input type="radio" class="btn-check" name="acceso_puerta_cachapoal" id="puertaCachapoalNo" formControlName="acceso_puerta_cachapoal" value="no" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="puertaCachapoalNo">NO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Furgón escolar</span>
+                                    <input type="radio" class="btn-check" name="acceso_furgon_escolar" id="furgonSi" formControlName="acceso_furgon_escolar" value="si" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="furgonSi">SI</label>
+                                    <input type="radio" class="btn-check" name="acceso_furgon_escolar" id="furgonNo" formControlName="acceso_furgon_escolar" value="no" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="furgonNo">NO</label>
+                                    <input type="checkbox" class="btn-check" id="furgon_control_porton_llano" autocomplete="off" value="si" formControlName="furgon_control_porton_llano">
+                                    <label class="btn btn-outline-success" for="furgon_control_porton_llano">Control</label>
+                                    <input type="checkbox" class="btn-check" id="furgon_llave_porton_llano" autocomplete="off" value="si" formControlName="furgon_llave_porton_llano">
+                                    <label class="btn btn-outline-success" for="furgon_llave_porton_llano">Llave</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="patente" class="col-sm-3 col-form-label">Patentes de vehículos</label>
+                            <div class="col-sm-3 mb-2">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="patente1" formControlName="patente1" placeholder="Patente">
+                                    <label for="patente1">Patente</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 mb-2">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="patente2" formControlName="patente2" placeholder="Patente">
+                                    <label for="patente2">Patente</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 mb-2">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="patente3" formControlName="patente3" placeholder="Patente">
+                                    <label for="patente3">Patente</label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="mb-3 row text-center">
+                            <div class="col-sm-6 mb-2">
+                                <button type="text" class="btn btn-secondary" routerLink="/lista-vecinos">Volver</button>
+                            </div>
+                            <div class="col-sm-6 mb-2">
+                                <button type="submit" class="btn btn-dark"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+                                <div *ngIf="loading == true" class="spinner-grow float-end" style="width: 3rem; height: 3rem;" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-bg-primary">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

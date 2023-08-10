@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card border-primary text-center mt-2 ">
+          <div class="card-header text-bg-primary">
+            <h3>Listado de Vecinos</h3>
+          </div>
+          <form [formGroup]="formBusqueda" (submit)="getVecinoByNombre()">
+            <div class="card-body">
+              <div class="mt-3 row">
+                <div class="col-sm-6 mb-2 ">
+                  <button class="btn btn-primary float-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Busqueda <i class="fa-solid fa-sort-down"></i>
+                  </button>
+                </div>
+                <div class="col-sm-6 mb-2">
+                  <button type="button" class="btn btn-success float-end me-2" routerLink="/crear-vecino"> <i class="fa-solid fa-user-plus"></i> Ingresar un Vecino</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="collapse" id="collapseExample">
+                    <div class="row">
+                      <div class="col-md-6 mb-2">
+                          <div class="form-floating">
+                              <input type="text" class="form-control" id="nombrevecino" formControlName="nombreVecino" placeholder="Busqueda por Nombre">
+                              <label for="nombrevecino">Busqueda por Nombre</label>
+                          </div>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                          <div class="form-floating">
+                            <button type="submit" class="btn btn-dark float-end me-2" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div *ngIf="vecinos.length == 0" class="alert alert-dark mt-3" role="alert">
+            <h5>No se encontraron datos</h5>
+          </div>
+          <table *ngIf="vecinos.length > 0" class="table table-striped">
+            <thead class="table-dark">
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngIf="vecinos else noData">
+                <tr *ngFor="let vecino of vecinos; let i = index">
+                  <ng-container *ngIf="vecino.personales">
+                    <td>{{i+1}}</td>
+                    <td>{{vecino.personales.nombre}}</td>
+                    <td>{{vecino.personales.direccion}}</td>
+                    <td>
+                      <a routerLink="/cliente/editar/{{vecino.id}}" class="btn btn-outline-secondary">
+                        <i class="fas fa-angle-double-right"></i> Editar
+                      </a>
+                      <button type="button" class="btn btn-outline-danger ms-4" (click)="deleteVecino(vecino.id)"><i class="fas fas fa-trash" ></i> Eliminar</button>
+                    </td>
+                  </ng-container>
+                </tr>
+              </ng-container>
+              <ng-template #noData>
+                <tr>
+                  <td colspan="4">No se encontraron datos</td>
+                </tr>
+              </ng-template>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  
+  </div>

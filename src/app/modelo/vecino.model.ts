@@ -1,0 +1,28 @@
+export interface Vecino{
+    id:string,
+    personales?:{
+        nombre:string;
+        rut:string;
+        direccion:string;
+        email:string;
+        telefono:number;
+    },
+    integrantes?:{
+        cantidad:number;
+        ninios:string;
+        edades:number[];
+        mayores:string;
+        reducida:string;
+    },
+    accesos?:{
+        portonPlaya:string;
+        numerosAsociados:number[];
+        portonLlano:string;
+        controlPortonLlano:string;
+        llavePortonLlano:string;
+        puertaPlaya:string;
+        puertaLlano:string;
+        puertaCachapoal:string;
+        patentesVehiculos:string[];
+    };
+}
